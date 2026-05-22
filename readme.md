@@ -1,17 +1,26 @@
-# mup-docker-deploy
+# @sergeant61/mup-docker-deploy
 
 Deploy using a custom `Dockerfile`.
 
-This plugin is under development and is missing some features
+Fork of [meteor-up/mup-docker-deploy](https://github.com/meteor-up/mup-docker-deploy) with deployment health checks and automatic rollback. The upstream package on npm is [`mup-docker-deploy`](https://www.npmjs.com/package/mup-docker-deploy).
 
 ## Getting started
 
 Before starting, you should have a `Dockerfile` in your app's directory.
 
-First, install mup and mup-docker-deploy with:
+First, install mup and this plugin with:
 
 ```bash
-npm i -g mup mup-docker-deploy
+npm i -g mup @sergeant61/mup-docker-deploy
+```
+
+In `mup.js`, add the plugin:
+
+```js
+module.exports = {
+  plugins: ['@sergeant61/mup-docker-deploy'],
+  // ...
+};
 ```
 
 Second, create a config with:
