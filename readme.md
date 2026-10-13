@@ -80,10 +80,12 @@ Notes:
 
 ## Graceful stop
 
-On deploy and on `mup stop`, the running container is stopped with `docker stop`:
-it receives SIGTERM and is killed after `app.docker.stopTimeout` seconds
-(default 10, docker's own default). Give the app enough time to finish in-flight
-requests and jobs when it handles SIGTERM:
+On deploy, `mup restart` and `mup stop`, the running container is stopped with
+`docker stop`: it receives SIGTERM and is killed after `app.docker.stopTimeout`
+seconds (default 10, docker's own default). The container is also started with
+`--stop-timeout` set to the same value, so a docker daemon restart or a host
+reboot gives the app the same grace period. Give the app enough time to finish
+in-flight requests and jobs when it handles SIGTERM:
 
 ```js
 module.exports = {

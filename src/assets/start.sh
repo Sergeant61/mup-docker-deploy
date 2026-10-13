@@ -30,6 +30,7 @@ sudo docker network disconnect bridge -f $APPNAME || true
 sudo docker run \
   -d \
   --restart=always \
+  --stop-timeout=$STOP_TIMEOUT \
   --publish=$BIND:$PUBLISHED_PORT:$EXPOSED_PORT \
   --hostname="$HOSTNAME-$APPNAME" \
   --env-file=$ENV_FILE \
